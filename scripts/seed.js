@@ -1,10 +1,10 @@
 const { db } = require('@vercel/postgres');
-const {
-  invoices,
-  customers,
-  revenue,
-  users,
-} = require('../app/lib/placeholder-data.js');
+// const {
+//   invoices,
+//   customers,
+//   revenue,
+//   users,
+// } = require('../app/lib/placeholder-data.js');
 const bcrypt = require('bcrypt');
 
 async function seedUsers(client) {
@@ -23,22 +23,22 @@ async function seedUsers(client) {
     console.log(`Created "users" table`);
 
     // Insert data into the "users" table
-    const insertedUsers = await Promise.all(
-      users.map(async (user) => {
-        const hashedPassword = await bcrypt.hash(user.password, 10);
-        return client.sql`
-        INSERT INTO users (id, name, email, password)
-        VALUES (${user.id}, ${user.name}, ${user.email}, ${hashedPassword})
-        ON CONFLICT (id) DO NOTHING;
-      `;
-      }),
-    );
+    // const insertedUsers = await Promise.all(
+    //   users.map(async (user) => {
+    //     const hashedPassword = await bcrypt.hash(user.password, 10);
+    //     return client.sql`
+    //     INSERT INTO users (id, name, email, password)
+    //     VALUES (${user.id}, ${user.name}, ${user.email}, ${hashedPassword})
+    //     ON CONFLICT (id) DO NOTHING;
+    //   `;
+    //   }),
+    // );
 
-    console.log(`Seeded ${insertedUsers.length} users`);
+    // console.log(`Seeded ${insertedUsers.length} users`);
 
     return {
       createTable,
-      users: insertedUsers,
+      // users: insertedUsers,
     };
   } catch (error) {
     console.error('Error seeding users:', error);
@@ -64,21 +64,21 @@ async function seedInvoices(client) {
     console.log(`Created "invoices" table`);
 
     // Insert data into the "invoices" table
-    const insertedInvoices = await Promise.all(
-      invoices.map(
-        (invoice) => client.sql`
-        INSERT INTO invoices (customer_id, amount, status, date)
-        VALUES (${invoice.customer_id}, ${invoice.amount}, ${invoice.status}, ${invoice.date})
-        ON CONFLICT (id) DO NOTHING;
-      `,
-      ),
-    );
+    // const insertedInvoices = await Promise.all(
+    //   invoices.map(
+    //     (invoice) => client.sql`
+    //     INSERT INTO invoices (customer_id, amount, status, date)
+    //     VALUES (${invoice.customer_id}, ${invoice.amount}, ${invoice.status}, ${invoice.date})
+    //     ON CONFLICT (id) DO NOTHING;
+    //   `,
+    //   ),
+    // );
 
-    console.log(`Seeded ${insertedInvoices.length} invoices`);
+    // console.log(`Seeded ${insertedInvoices.length} invoices`);
 
     return {
       createTable,
-      invoices: insertedInvoices,
+      // invoices: insertedInvoices,
     };
   } catch (error) {
     console.error('Error seeding invoices:', error);
@@ -103,21 +103,21 @@ async function seedCustomers(client) {
     console.log(`Created "customers" table`);
 
     // Insert data into the "customers" table
-    const insertedCustomers = await Promise.all(
-      customers.map(
-        (customer) => client.sql`
-        INSERT INTO customers (id, name, email, image_url)
-        VALUES (${customer.id}, ${customer.name}, ${customer.email}, ${customer.image_url})
-        ON CONFLICT (id) DO NOTHING;
-      `,
-      ),
-    );
+    // const insertedCustomers = await Promise.all(
+    //   customers.map(
+    //     (customer) => client.sql`
+    //     INSERT INTO customers (id, name, email, image_url)
+    //     VALUES (${customer.id}, ${customer.name}, ${customer.email}, ${customer.image_url})
+    //     ON CONFLICT (id) DO NOTHING;
+    //   `,
+    //   ),
+    // );
 
-    console.log(`Seeded ${insertedCustomers.length} customers`);
+    // console.log(`Seeded ${insertedCustomers.length} customers`);
 
     return {
       createTable,
-      customers: insertedCustomers,
+      // customers: insertedCustomers,
     };
   } catch (error) {
     console.error('Error seeding customers:', error);
@@ -138,21 +138,21 @@ async function seedRevenue(client) {
     console.log(`Created "revenue" table`);
 
     // Insert data into the "revenue" table
-    const insertedRevenue = await Promise.all(
-      revenue.map(
-        (rev) => client.sql`
-        INSERT INTO revenue (month, revenue)
-        VALUES (${rev.month}, ${rev.revenue})
-        ON CONFLICT (month) DO NOTHING;
-      `,
-      ),
-    );
+    // const insertedRevenue = await Promise.all(
+    //   revenue.map(
+    //     (rev) => client.sql`
+    //     INSERT INTO revenue (month, revenue)
+    //     VALUES (${rev.month}, ${rev.revenue})
+    //     ON CONFLICT (month) DO NOTHING;
+    //   `,
+    //   ),
+    // );
 
-    console.log(`Seeded ${insertedRevenue.length} revenue`);
+    // console.log(`Seeded ${insertedRevenue.length} revenue`);
 
     return {
       createTable,
-      revenue: insertedRevenue,
+      // revenue: insertedRevenue,
     };
   } catch (error) {
     console.error('Error seeding revenue:', error);

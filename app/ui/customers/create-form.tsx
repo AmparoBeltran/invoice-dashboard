@@ -10,7 +10,6 @@ export default function Form() {
   const initialState = { message: null, errors: {} };
 
   const [state, dispatch] = useFormState(createCustomer, initialState);
-  console.log(state);
   return (
     <form action={dispatch}>
       <div className="rounded-md bg-gray-50 p-4 md:p-6">
@@ -25,7 +24,6 @@ export default function Form() {
                 id="image_url"
                 name="image_url"
                 type="string"
-                // defaultValue={customers.email}
                 placeholder="Enter customer image URL"
                 className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
               />
@@ -54,7 +52,6 @@ export default function Form() {
                 name="name"
                 type="string"
                 step="0.01"
-                // defaultValue={customers.name}
                 placeholder="Enter customer name"
                 className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
               />
@@ -83,7 +80,6 @@ export default function Form() {
                 name="email"
                 type="string"
                 step="0.01"
-                // defaultValue={customers.email}
                 placeholder="Enter customer email"
                 className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
               />

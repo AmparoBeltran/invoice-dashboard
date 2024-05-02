@@ -1,6 +1,5 @@
 'use client';
 
-import { lusitana } from '@/app/ui/fonts';
 import {
   AtSymbolIcon,
   KeyIcon,
@@ -96,7 +95,7 @@ export default function RegisterForm() {
                 ))}
             </div>
           </div>
-          <LoginButton />
+          <RegisterButton />
           <div
             className="flex h-8 items-end space-x-1"
             aria-live="polite"
@@ -115,7 +114,7 @@ export default function RegisterForm() {
   );
 }
 
-function LoginButton() {
+function RegisterButton() {
   const { pending } = useFormStatus();
 
   return (

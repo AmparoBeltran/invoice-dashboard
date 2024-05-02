@@ -189,9 +189,6 @@ export async function createCustomer(
 
   // Prepare data for insertion into the database
   const { image_url, name, email } = validatedFields.data;
-  // const amountInCents = amount * 100;
-  // const date = new Date().toISOString().split('T')[0];
-
   // Insert data into the database
   try {
     const res = await sql`
@@ -208,7 +205,7 @@ export async function createCustomer(
     };
   }
 
-  // Revalidate the cache for the invoices page and redirect the user.
+  // Revalidate the cache for the customers page and redirect the user.
   revalidatePath('/dashboard/customers');
   redirect('/dashboard/customers');
 }
@@ -301,7 +298,6 @@ export type UserState = {
 export async function createNewUser(prevState: UserState, formData: FormData) {
   // Validate form using Zod
   const validatedFields = CreateNewUser.safeParse({
-    // userId: formData.get('userId'),
     name: formData.get('name'),
     email: formData.get('email'),
     password: formData.get('password'),
