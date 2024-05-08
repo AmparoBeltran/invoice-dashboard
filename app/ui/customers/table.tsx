@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { UpdateCustomer, DeleteCustomer } from '@/app/ui/invoices/buttons';
+import { UpdateCustomer, DeleteCustomer } from '@/app/ui/buttons';
 
 import { FormattedCustomersTable } from '@/app/lib/definitions';
 

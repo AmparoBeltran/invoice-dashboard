@@ -6,7 +6,7 @@ import { CustomersTableSkeleton } from '@/app/ui/skeletons';
 import { Suspense } from 'react';
 import { fetchCustomersPages, fetchFilteredCustomers } from '@/app/lib/data';
 import { Metadata } from 'next';
-import { CreateCustomer } from '@/app/ui/invoices/buttons';
+import { CreateCustomer } from '@/app/ui/buttons';
 
 export const metadata: Metadata = {
   title: 'Customers',

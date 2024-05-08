@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { Button } from '@/app/ui/button';
 import { updateCustomer } from '@/app/lib/actions';
 import { useFormState } from 'react-dom';
+import { useToast } from '@/components/ui/use-toast';
 
 export default function EditCustomerForm({
   customers,
@@ -15,9 +16,10 @@ export default function EditCustomerForm({
   const initialState = { message: null, errors: {} };
   const updateCustomerWithId = updateCustomer.bind(null, customers.id);
   const [state, dispatch] = useFormState(updateCustomerWithId, initialState);
+  const { toast } = useToast();
 
   return (
-    <form action={dispatch}>
+    <form action={() => 1 /*dispatch*/}>
       <div className="rounded-md bg-gray-50 p-4 md:p-6">
         <div className="mb-4">
           <label htmlFor="amount" className="mb-2 block text-sm font-medium">
@@ -66,7 +68,16 @@ export default function EditCustomerForm({
         >
           Cancel
         </Link>
-        <Button type="submit">Edit Customer</Button>
+        <Button
+          // type="submit"
+          onClick={() => {
+            toast({
+              title: 'Action disabled for the demo',
+            });
+          }}
+        >
+          Edit Customer
+        </Button>
       </div>
     </form>
   );

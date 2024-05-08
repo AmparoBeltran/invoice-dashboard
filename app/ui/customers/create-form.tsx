@@ -5,13 +5,16 @@ import { AtSymbolIcon, UserCircleIcon } from '@heroicons/react/24/outline';
 import { Button } from '@/app/ui/button';
 import { createCustomer } from '@/app/lib/actions';
 import { useFormState } from 'react-dom';
+import { useToast } from '@/components/ui/use-toast';
 
 export default function Form() {
+  const { toast } = useToast();
+
   const initialState = { message: null, errors: {} };
 
   const [state, dispatch] = useFormState(createCustomer, initialState);
   return (
-    <form action={dispatch}>
+    <form action={() => 1 /*dispatch*/}>
       <div className="rounded-md bg-gray-50 p-4 md:p-6">
         {/* Customer avatar */}
         <div className="mb-4">
@@ -103,7 +106,16 @@ export default function Form() {
         >
           Cancel
         </Link>
-        <Button type="submit">Create Customer</Button>
+        <Button
+          // type="submit"
+          onClick={() => {
+            toast({
+              title: 'Action disabled for the demo',
+            });
+          }}
+        >
+          Create Customer
+        </Button>
       </div>
     </form>
   );

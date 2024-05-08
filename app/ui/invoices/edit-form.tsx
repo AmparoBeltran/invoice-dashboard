@@ -11,6 +11,7 @@ import Link from 'next/link';
 import { Button } from '@/app/ui/button';
 import { updateInvoice } from '@/app/lib/actions';
 import { useFormState } from 'react-dom';
+import { useToast } from '@/components/ui/use-toast';
 
 export default function EditInvoiceForm({
   invoice,
@@ -22,9 +23,10 @@ export default function EditInvoiceForm({
   const initialState = { message: null, errors: {} };
   const updateInvoiceWithId = updateInvoice.bind(null, invoice.id);
   const [state, dispatch] = useFormState(updateInvoiceWithId, initialState);
+  const { toast } = useToast();
 
   return (
-    <form action={dispatch}>
+    <form action={() => 1 /*dispatch*/}>
       <div className="rounded-md bg-gray-50 p-4 md:p-6">
         <div className="mb-4">
           <label htmlFor="customer" className="mb-2 block text-sm font-medium">
@@ -119,7 +121,16 @@ export default function EditInvoiceForm({
         >
           Cancel
         </Link>
-        <Button type="submit">Edit Invoice</Button>
+        <Button
+          // type="submit"
+          onClick={() => {
+            toast({
+              title: 'Action disabled for the demo',
+            });
+          }}
+        >
+          Edit Invoice
+        </Button>
       </div>
     </form>
   );
